@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mushtaq Rana Imran | Academic Website</title>
+  <meta name="description" content="Personal academic website for Mushtaq Rana Imran: research, publications, education, and contact." />
+
+  <!-- ===== Simple, professional color system ===== -->
+  <style>
+    :root{
+      --bg: #ffffff;
+      --text: #0f172a;          /* slate-900 */
+      --muted: #475569;         /* slate-600 */
+      --line: #e2e8f0;          /* slate-200 */
+      --card: #f8fafc;          /* slate-50 */
+      --accent: #8a0c12;        /* Harvard-like deep crimson */
+      --accent-2: #0b3d91;      /* deep blue */
+      --link: var(--accent-2);
+      --shadow: 0 4px 20px rgba(2, 6, 23, 0.06);
+      --radius: 14px;
+      --maxw: 1100px;
+    }
+
+    /* Base */
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); background:var(--bg); line-height:1.6; 
+    }
+    a{color:var(--link); text-decoration: none}
+    a:hover{text-decoration: underline}
+    img{max-width:100%; height:auto; display:block}
+    .container{max-width: var(--maxw); margin: 0 auto; padding: 0 1.1rem}
+    .btn{display:inline-block; padding:.7rem 1rem; border-radius: 999px; background:var(--accent); color:#fff; border:1px solid transparent}
+    .btn.secondary{background:transparent; color:var(--accent); border-color:var(--accent)}
+
+    /* Skip link */
+    .skip-link{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
+    .skip-link:focus{left:1rem; top:1rem; width:auto; height:auto; background:#fff; padding:.5rem .75rem; border-radius:8px; border:1px solid var(--line); z-index:9999}
+
+    /* Header / Nav */
+    header{position:sticky; top:0; z-index:100; background:#fff; border-bottom:1px solid var(--line)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:.8rem 0}
+    .brand{display:flex; gap:.65rem; align-items:center}
+    .logo{
+      width:40px; height:40px; border-radius:10px; background: conic-gradient(from 180deg, var(--accent), var(--accent-2));
+      box-shadow: var(--shadow);
+    }
+    .brand h1{font-size:1rem; margin:0; letter-spacing:.3px}
+    .brand .subtitle{font-size:.82rem; color:var(--muted)}
+
+    nav ul{display:flex; gap:1rem; list-style:none; margin:0; padding:0}
+    nav a{padding:.5rem .7rem; border-radius:999px}
+    nav a.active, nav a:hover{background: var(--card); text-decoration:none}
+
+    /* Mobile menu */
+    .menu-toggle{display:none; background:none; border:1px solid var(--line); padding:.45rem .6rem; border-radius:8px}
+    @media (max-width: 820px){
+      nav ul{display:none; flex-direction:column; background:#fff; position:absolute; right:1rem; top:64px; padding:.5rem; border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow)}
+      nav ul.open{display:flex}
+      .menu-toggle{display:inline-flex}
+    }
+
+    /* Hero */
+    .hero{padding: 3rem 0 2rem; background: linear-gradient(180deg, #fff, #fbfbfd)}
+    .hero-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:2rem; align-items:center}
+    .hero h2{font-size: clamp(1.6rem, 2vw + 1rem, 2.4rem); margin:.2rem 0}
+    .hero p{color:var(--muted)}
+    .tag{display:inline-block; font-size:.8rem; background:var(--card); border:1px solid var(--line); padding:.25rem .6rem; border-radius:999px; color:var(--muted)}
+    .profile{justify-self:end; border-radius:16px; overflow:hidden; border:1px solid var(--line); background:var(--card)}
+    .profile .ph{aspect-ratio:1/1; display:grid; place-items:center; color:#fff; font-weight:600; font-size:2rem; background:linear-gradient(135deg, var(--accent), var(--accent-2))}
+
+    @media (max-width: 820px){
+      .hero-grid{grid-template-columns:1fr}
+      .profile{justify-self:start; max-width:220px}
+    }
+
+    /* Sections */
+    section{padding: 3rem 0; border-top:1px solid var(--line)}
+    section h3{font-size:1.4rem; margin:0 0 .75rem}
+    .lead{color:var(--muted)}
+
+    /* Cards / lists */
+    .grid{display:grid; gap:1rem}
+    .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
+    .grid.cols-2{grid-template-columns: repeat(2, 1fr)}
+    @media (max-width: 900px){
+      .grid.cols-3{grid-template-columns: 1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .grid.cols-3, .grid.cols-2{grid-template-columns:1fr}
+    }
+    .card{background:var(--card); border:1px solid var(--line); border-radius: var(--radius); padding:1rem; box-shadow: var(--shadow)}
+    .card h4{margin:.2rem 0 .4rem; font-size:1.05rem}
+    .muted{color:var(--muted)}
+
+    /* Timeline (Education) */
+    .timeline{position:relative; padding-left:1rem}
+    .timeline:before{content:""; position:absolute; left:.25rem; top:.2rem; bottom:.2rem; width:2px; background:var(--line)}
+    .tl-item{position:relative; margin:0 0 1.1rem 0; padding-left:1.2rem}
+    .tl-item:before{content:""; position:absolute; left:-.1rem; top:.4rem; width:.65rem; height:.65rem; border-radius:999px; background:var(--accent)}
+
+    /* Publications */
+    .pub{padding:.9rem 1rem; border:1px solid var(--line); border-radius:12px}
+    .pub + .pub{margin-top:.8rem}
+    .pub .title{font-weight:600}
+    .pub .meta{font-size:.9rem; color:var(--muted)}
+
+    /* Contact */
+    form{display:grid; gap:.8rem; max-width:720px}
+    input, textarea{width:100%; padding:.75rem .9rem; border-radius:10px; border:1px solid var(--line); font:inherit; background:#fff}
+    textarea{min-height:140px}
+
+    /* Footer */
+    footer{border-top:1px solid var(--line); padding:2rem 0; font-size:.95rem; color:var(--muted)}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Mushtaq Rana Imran</h1>
+          <div class="subtitle">Personal Academic Website</div>
+        </div>
+      </div>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav>
+        <ul id="menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#research">Research Areas</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ========== HOME ========== -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="tag">Welcome</span>
+          <h2>Advancing quantum materials and computational physics.</h2>
+          <p class="lead">I am <strong>Mushtaq Rana Imran</strong>. My work spans condensed-matter theory, computational modeling, and data-driven science. This site collects my background, publications, and ongoing research directions.</p>
+          <div style="margin-top:1rem; display:flex; gap:.6rem; flex-wrap:wrap">
+            <a href="#publications" class="btn">View Publications</a>
+            <a href="#contact" class="btn secondary">Get in Touch</a>
+          </div>
+        </div>
+        <div class="profile">
+          <!-- Placeholder profile emblem; replace with your portrait if desired -->
+          <div class="ph" aria-hidden="true">MI</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section id="about">
+      <div class="container">
+        <h3>About</h3>
+        <p class="lead">Overview of my academic background, research interests, and professional journey.</p>
+        <div class="grid cols-2" style="margin-top:1rem">
+          <div class="card">
+            <h4>Background</h4>
+            <p>I am an academic researcher focusing on quantum materials, strongly correlated electrons, and numerical methods. I enjoy building bridges between rigorous theory and practical computation to illuminate emergent phenomena in complex systems.</p>
+          </div>
+          <div class="card">
+            <h4>Interests</h4>
+            <p>Topics include <em>unconventional superconductivity</em>, <em>altermagnetism</em>, <em>Hubbard/t-J models</em>, and <em>machine-learning accelerated simulation</em>. I also explore methodological advances in high-performance computing and scientific visualization.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PUBLICATIONS ========== -->
+    <section id="publications">
+      <div class="container">
+        <h3>Publications</h3>
+        <p class="lead">Selected scholarly works. For a complete and up-to-date list, visit my Google Scholar profile.</p>
+        <p>Google Scholar: <a href="#" aria-label="Google Scholar profile link">(add your profile link)</a></p>
+
+        <article class="pub">
+          <div class="title">Title of Paper One</div>
+          <div class="meta">Journal / Conference · Year · Co-authors</div>
+          <p class="muted">Brief one-line summary of the paper’s contribution. <a href="#">Link to publisher / preprint</a></p>
+        </article>
+        <article class="pub">
+          <div class="title">Title of Paper Two</div>
+          <div class="meta">Journal / Conference · Year · Co-authors</div>
+          <p class="muted">Key idea or result in one sentence. <a href="#">Link to publisher / preprint</a></p>
+        </article>
+        <article class="pub">
+          <div class="title">Title of Paper Three</div>
+          <div class="meta">Journal / Conference · Year · Co-authors</div>
+          <p class="muted">Optional short description. <a href="#">Link to publisher / preprint</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========== RESEARCH AREAS ========== -->
+    <section id="research">
+      <div class="container">
+        <h3>Research Areas</h3>
+        <div class="grid cols-3" style="margin-top:.8rem">
+          <div class="card">
+            <h4>Quantum Materials</h4>
+            <p class="muted">Correlated electron systems, symmetry-breaking, and emergent orders in low-dimensional lattices.</p>
+          </div>
+          <div class="card">
+            <h4>Computational Physics</h4>
+            <p class="muted">HPC workflows, first-principles modeling, and many-body numerics for realistic materials.</p>
+          </div>
+          <div class="card">
+            <h4>ML for Science</h4>
+            <p class="muted">Physics-informed learning, surrogate models, and fast solvers for complex PDEs and quantum models.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EDUCATION ========== -->
+    <section id="education">
+      <div class="container">
+        <h3>Education</h3>
+        <div class="timeline" style="margin-top:1rem">
+          <div class="tl-item">
+            <strong>Ph.D. in Physics</strong> · University Name · <span class="muted">Year–Year</span>
+            <div class="muted">Thesis focus, key coursework, advisor (optional).</div>
+          </div>
+          <div class="tl-item">
+            <strong>M.S. in Physics</strong> · University Name · <span class="muted">Year–Year</span>
+            <div class="muted">Concentrations and relevant workshops/certifications.</div>
+          </div>
+          <div class="tl-item">
+            <strong>B.S. in Physics</strong> · University Name · <span class="muted">Year–Year</span>
+            <div class="muted">Honors, awards, notable projects.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact">
+      <div class="container">
+        <h3>Contact</h3>
+        <p class="lead">Feel free to reach out for collaboration, talks, or questions.</p>
+
+        <!-- Option A: Simple email listing -->
+        <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+
+        <!-- Option B: Contact form (requires a backend or a service like Formspree). Replace the action URL accordingly.) -->
+        <form action="https://formspree.io/f/your-id" method="POST">
+          <label>
+            Name
+            <input type="text" name="name" placeholder="Your full name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            Message
+            <textarea name="message" placeholder="How can I help?" required></textarea>
+          </label>
+          <button class="btn" type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex; flex-wrap:wrap; gap:.6rem; align-items:center; justify-content:space-between">
+        <div>© <span id="year"></span> Mushtaq Rana Imran. All rights reserved.</div>
+        <div>Inspired by <a href="https://ciqm.harvard.edu/" target="_blank" rel="noopener">CIQM</a>.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const btn = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('#menu');
+    btn?.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Active link highlight on scroll
+    const links = document.querySelectorAll('nav a');
+    const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+    const onScroll = () => {
+      const y = window.scrollY + 100;
+      sections.forEach((sec, i) => {
+        if(!sec) return;
+        const top = sec.offsetTop, bottom = top + sec.offsetHeight;
+        links[i].classList.toggle('active', y >= top && y < bottom);
+      })
+    }
+    document.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    // Year
+    document.querySelector('#year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
