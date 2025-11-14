@@ -95,6 +95,14 @@
     .card h4{margin:.2rem 0 .4rem; font-size:1.05rem}
     .muted{color:var(--muted)}
 
+      .card img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    }
+
+
     /* Timeline (Education) */
     .timeline{position:relative; padding-left:1rem}
     .timeline:before{content:""; position:absolute; left:.25rem; top:.2rem; bottom:.2rem; width:2px; background:var(--line)}
@@ -231,25 +239,48 @@
     </section>
 
     <!-- ========== RESEARCH AREAS ========== -->
-    <section id="research">
+<section id="research">
   <div class="container">
     <h3>Research Areas</h3>
     <div class="grid cols-3" style="margin-top:.8rem">
+
+      <!-- Card 1: AQNODE / Quantum control -->
       <div class="card">
         <h4>Quantum Filtering and Control in Open Systems</h4>
-        <p class="muted">Explore advanced methodologies for modeling and controlling dissipative quantum systems using machine learning and neural ordinary differential equations (AQNODE), enabling real-time quantum state prediction and feedback control in complex experimental settings.</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:.4rem; margin-bottom:.6rem;">
+          <img src="fig1_aqnode.png" alt="AQNODE framework for quantum filtering" />
+          <img src="fig2_aqnode.png" alt="Neural ODE based quantum trajectory modeling" />
+        </div>
+        <p class="muted">
+          Machine-learning and neural ODE based approaches for modeling and controlling dissipative qubits,
+          enabling real-time quantum state estimation and feedback control.
+        </p>
       </div>
+
+      <!-- Card 2: Altermagnetism -->
       <div class="card">
         <h4>Altermagnetism and Strongly Correlated Quantum Systems</h4>
-        <p class="muted">Investigate the effects of nearest and next-nearest-neighbor interactions in altermagnets, focusing on the interplay between magnetism and superconductivity, and how these interactions influence the electronic structure and quantum phase transitions in low-dimensional materials.</p>
+        <img src="fig_altermag.png" alt="Magnetism and pairing in altermagnets" style="margin-bottom:.6rem;" />
+        <p class="muted">
+          Magnetism and pairing in next-nearest-neighbor altermagnets, focusing on the interplay between
+          electronic structure, superconductivity, and quantum phase transitions.
+        </p>
       </div>
+
+      <!-- Card 3: Stochastic processes -->
       <div class="card">
         <h4>Stochastic Processes and Quantum Dynamics</h4>
-        <p class="muted">Develop and apply analytical solutions to multi-dimensional generalized Langevin equations for quantum systems, enhancing the understanding of stochastic processes in multi-dimensional spaces with applications to quantum Monte Carlo simulations and material simulations.</p>
+        <img src="fig_stochastic_processes.png" alt="Generalized Langevin dynamics in multi-dimensional systems" style="margin-bottom:.6rem;" />
+        <p class="muted">
+          Analytical and numerical studies of generalized Langevin dynamics and stochastic processes, with
+          applications to quantum Monte Carlo and multi-dimensional systems.
+        </p>
       </div>
+
     </div>
   </div>
 </section>
+
 
     <!-- ========== EDUCATION ========== -->
 <section id="education">
